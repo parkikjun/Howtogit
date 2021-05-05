@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="like_contents">
+		<div class="container">
+			<h1>나의 좋아요 목록</h1>
+			
+			<section>
+				<div class="row">
+					<div class="col-xs-12">
+						<div th:if="${like.totalQty == 0}">좋아요 목록이 비어있습니다.</div>
+						<div th:if="${like.totalQty > 0}">
+							<form id="cafeform" method="post"
+								action="/like/apply"
+								th:action="@{/like/apply}"
+								th:object="${cafeForm}">
+								<table class="table table-hover">
+									<colgroup>
+										<col width="5%"/>
+										<col width="20%"/>
+										<col width="20%"/>
+										<col width="15%"/>
+										<col width="15%"/>
+										<col width="25%"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>No.</th>
+											
+											<th>까페명</th>
+											
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="cafe, cafeStat : ${like.item}">
+											<input type="hidden"
+												th:field="*{cafeInfoList[__${cafeStat.index}__].cafeId}" />
+											<td th:text="${cafeStat.count}">1</td>
+											
+											<td>
+												<a th:href="'/cafe/cafeView/'+${cafe.cafeId}">
+												 <span th:text="${cafe.cafe_name}">콩까페</span>
+												 </a>
+											 </td>
+											
+																					
+											
+										
+											
+										</tr>
+									</tbody>
+								</table>
+								</form>
+						</div>
+					</div>
+				</div>
+			</section>	
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+

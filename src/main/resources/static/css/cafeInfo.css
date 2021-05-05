@@ -1,0 +1,53 @@
+body{
+	padding: 0;
+}
+
+div{
+	display: block;
+}
+
+.goods-list {
+    position: relative;
+    padding: 0 0 30px;
+}
+
+.goods-list .list-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    overflow: hidden;
+    counter-reset: item-ranking;
+}
+
+.goods-list .item {
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0 22px 70px;
+    width: 25%;
+    border-right: 2px #f6f6f6 solid;
+}
+.goods-list .item .thumb {
+	height:95%;
+    display: block;
+    position: relative;
+    margin: 0 auto 5px;
+    background: none;
+    overflow: hidden;
+}
+
+.goods-list .item .thumb img {
+    display: block;
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+    border: 0;
+}
+
+.pagination-div {
+	text-align: center;
+}

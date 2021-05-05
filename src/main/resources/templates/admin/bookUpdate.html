@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<title>도서 대출 시스템(웹)</title>
+</head>
+<body>
+	<div th:fragment="bookUpdate_contents">
+		<div class="container">
+			<div class="col-sm-5">
+				<h1>도서 수정</h1>
+				
+				<form method="post" th:action="@{/admin/bookUpdate}"
+					th:object="${lendingBook}">
+					<input type="hidden" name="lending_book_id" th:field="*{lending_book_id}"/>
+					<table class="table table-bordered table-hover">
+						<tr>
+							<th class="active col-sm-3">ISBN</th>
+							<td>
+								<div class="form-group">
+									<input type="text" class="form-control"
+										th:field="*{isbn}"/>
+									<span class="text-danger"
+										th:if="${#fields.hasErrors('isbn')}"
+										th:errors="*{isbn}">isbn error</span>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th class="active col-sm-3">서적명</th>
+							<td>
+								<div class="form-group">
+									<input type="text" class="form-control"
+										th:field="*{book_name}"/>
+									<span class="text-danger"
+										th:if="${#fields.hasErrors('book_name')}"
+										th:errors="*{book_name}">book_name error</span>	
+								</div>
+							</td>
+						</tr>
+						
+						<tr>
+							<th class="active col-sm-3">신청여부</th>
+							<td>
+								<div class="form-group">
+									<span th:each="item : ${radioAppFlg}">
+										<input type="radio"
+											name="radioAppFlg"
+											th:text="${item.key}"
+											th:value="${item.value}"
+											th:field="*{lending_app_flg}" />
+									</span>
+										
+									<span class="text-danger"
+										th:if="${#fields.hasErrors('lending_app_flg')}"
+										th:errors="*{lending_app_flg}">lending_app_flg error</span>	
+									
+								</div>
+							</td>
+						</tr>
+						
+						<tr>
+							<th class="active col-sm-3">신청사유</th>
+							<td>
+								<div class="form-group">
+									<input type="text" class="form-control"
+										th:field="*{lending_app_reason}"/>
+									<span class="text-danger"
+										th:if="${#fields.hasErrors('lending_app_reason')}"
+										th:errors="*{lending_app_reason}">lending_app_reason error</span>	
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th class="active col-sm-3">대출상황</th>
+							<td>
+								<div class="form-group">
+									<input type="text" class="form-control"
+										th:field="*{lending_state}"/>
+									<span class="text-danger"
+										th:if="${#fields.hasErrors('lending_state')}"
+										th:errors="*{lending_state}">lending_state error</span>	
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th class="active col-sm-3">승인상황</th>
+							<td>
+								<div class="form-group">
+									<span th:each="item : ${radioAppStat}">
+										<input type="radio"
+											name="radioAppStat"
+											th:text="${item.key}"
+											th:value="${item.value}"
+											th:field="*{applicate_status}" />
+									</span>
+										
+									<span class="text-danger"
+										th:if="${#fields.hasErrors('applicate_status')}"
+										th:errors="*{applicate_status}">applicate_status error</span>	
+									
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<button class="btn btn-primary btn-lg pull-right" type="submit" name="update">수정</button>
+								<button class="btn btn-danger btn-lg" type="submit" name="delete">삭제</button>
+							</td>
+							
+						</tr>
+					</table>
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>

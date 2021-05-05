@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>회원가입</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/registration.css}"
+	href="../static/css/registration.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form action="#" th:action="@{/registration}"
+					th:object="${userInfo}" method="post" class="form-horizontal"
+					style ="border: 1px solid;
+					margin-left:auto;
+					margin-right:auto;
+					margin-top:auto;
+					margin-bottom:auto;
+					background: #ffffff;">
+					<h2 style="text-align: center;">회원가입</h2>
+					<div class="form-group">
+						<div class="col-sm-9 col-md-offset-2">
+							아이디 입력 <input type="text" th:field="*{username}"
+								class="form-control" /> <label
+								th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+								class="validation-message"></label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9 col-md-offset-2">
+							이메일 입력 <input type="text" th:field="*{mail_address}"
+								class="form-control" /> <label
+								th:if="${#fields.hasErrors('mail_address')}"
+								th:errors="*{mail_address}" class="validation-message"></label>
+						</div>
+					
+					</div>
+						<div class="form-group">
+							<input type="button" value="인증" class="sendMail">
+							<section class="check-section">
+							<input type="text" placeholder="인증 키 입력" style="display: none;"
+							class="compare"><span class="compare-text"
+							style="display: none">불일치</span>
+							</section>
+						</div>
+					<div class="form-group">
+						<div class="col-sm-9 col-md-offset-2">
+							패스워드 입력 <input type="password" th:field="*{password}"
+								class="form-control" /> <label
+								th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+								class="validation-message"></label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9 col-md-offset-2">
+							패스워드 확인 <input type="password" th:field="*{password2}"
+								class="form-control" /> <label
+								th:if="${#fields.hasErrors('password2')}"
+								th:errors="*{password2}" class="validation-message"></label>
+						</div>
+					</div>
+					<div class="col-sm-9 col-md-offset-2">
+						<input type="checkbox" name="terms" value="terms" />이용약관및 개인정보
+						처리방침에 동의합니다.
+					</div>
+					<div class="col-sm-9 col-md-offset-2">
+						<input type="checkbox" name="terms" value="terms" />마케팅 활용 동의 및 광고
+						수신에 동의합니다.(선택) <br> <br>
+					</div>
+​
+					<div class="form-group">
+						<div class="col-sm-9 col-md-offset-2">
+							<button type="submit" class="btn btn-primary btn-block">회원가입</button> 이미 계정이 있으신가요?<a href="/login">로그인</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/script/join.js"></script>
+</html>
+​

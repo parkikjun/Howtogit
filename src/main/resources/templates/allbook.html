@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="allbook_contents">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>제목</th>
+					<th>담기</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="book, bookStat : ${lendingBooks}">
+					<td th:text="${bookStat.count}">1</td>
+					<td th:text="${book.book_name}">삼국지</td>
+					<td>
+						<form action="#" 
+							th:action="'/cart/add/' + ${book.lending_book_id}" 
+							method="post">
+							<button>장바구니 담기</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

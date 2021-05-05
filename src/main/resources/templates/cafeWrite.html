@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+ 
+</head>
+<body>
+<div class="jumbotron text-center" style="margin-bottom: 0">
+	<h1>카페등록</h1>
+</div>
+
+<div class="container" style="margin-top:30px">
+	<div class="row">
+		<div class="col-sm-12">
+		<h2>글쓰기</h2>
+		<form th:action="@{/writeAction}" 
+		method="post" enctype="multipart/form-data"
+		>
+			<div class="form-group">
+				<label for="user">카페이름:</label>
+				<input type="text" class="form-control" id="cafe_name" name="cafe_name">	
+			</div>
+			<div class="form-group">
+				<input type="file" class="form-control-file border" 
+				name="image" id="image" accept="image/*" 
+				onchange="setThumbnail(event)" multiple/>
+				<div id="image_container"></div> 
+				
+			<script type="text/javascript"> 
+				function setThumbnail(event) { 
+					for (var image of event.target.files) { 
+						var reader = new FileReader(); 
+						reader.onload = function(event) { 
+							var img = document.createElement("img"); 
+							img.onclick = function()
+			                {
+			                    deleteDIV( this );
+			                }
+							img.setAttribute("src", event.target.result); 
+							
+							document.querySelector("div#image_container").appendChild(img); 
+							}; 
+							
+							console.log(image); 
+							reader.readAsDataURL(image);
+							};
+												
+					}
+				
+				
+				function deleteDIV(  deletingDivObj  )
+		        {
+		            var parentObj = deletingDivObj.parentNode ;
+		            parentObj.removeChild( deletingDivObj );
+		        };
+		        
+		        /*window.onload = function () {
+		        const div = document.getElementById('image_container');
+		        out.println(div);
+		        var newDIV = div.children;
+		        
+		        newDIV.onclick = function()
+                {
+                    deleteDIV( this );
+                }
+		        };
+		        
+				function imgclear(){
+					 const div = document.getElementById('image_container');
+					 
+					 
+					  if ( div.hasChildNodes() ) { 
+						  div.removeChild( div.Child(this) ); 
+						  }
+
+					
+				}*/
+			</script>
+			</div>
+			<div class="form-group">
+				<label for="cafe_contents">내용:</label>
+				<textarea class="form-control" rows="5" id="cafe_contents" name="cafe_contents"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">글쓰기</button>
+		</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>

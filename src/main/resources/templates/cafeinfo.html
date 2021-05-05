@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../static/css/cafeInfo.css"> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+</head>
+<body>
+<div class="containter">
+<div th:fragment="cafeboard">
+	<div class="subject" style="margin-bottom: 0">
+		<h3>만화카페</h3>
+	</div>
+	
+	<div class="goods-list">
+		<div class="list-wrapper clearfix">
+			<div th:each="cafeList : ${cafeList}" class="item" id="tag_search_item">
+				<!-- 카페 이미지 -->
+				<div class="thumb"><a th:href="'/cafe/cafeUpdate/'+ ${cafeList.cafeId}"><img th:src="'/image/'+ ${cafeList.cafeId} +'/'+ ${cafeList.cafe_image}"></a></div>
+				<!-- 카페이름 -->
+				<a th:href="'/cafe/cafeView/'+ ${cafeList.cafeId}">
+				<p th:text="${cafeList.cafe_name}" class="name">벌툰카페</p></a>
+				<!-- 버튼 -->
+				<div class="button">
+					<!-- 좋아요수 -->
+					<span class="s f1">
+						<a class="ic ic-like" th:href="'/like/add/'+ ${cafeList.cafeId}">좋아요</a>
+						
+					</span>
+				</div>
+				<p><a th:href="'/cafeReviewList/' + ${cafeList.cafeId}" >리뷰보기</a>
+               </p>
+			</div>
+		</div>
+		<div class="add_list">
+		<button onclick="location.href='/cafe/cafeWrite'">카페등록</button>
+	</div>
+	<div class="pagination-div">
+		<ul class="pagination">
+			<li th:each="i : ${#numbers.sequence(beginIndex, endIndex)}"
+				class="page-item"
+				th:classappend="${currentIndex == i } ? active : ''">
+				<a class="page-link" th:href="'/cafe/' + ${i}"><span th:text="${i}">1</span></a>
+		</ul>
+	</div>
+	
+	</div>
+	
+	</div>
+	
+</div>
+</body>
+</html>

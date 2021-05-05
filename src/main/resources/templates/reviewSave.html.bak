@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+	<title>리뷰등록</title>
+	<link rel="stylesheet" type="text/css" 
+		th:href="@{/css/review.css}"
+		href="../static/css/review.css"/>
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/4.4.0/css/font-awesome.css} "/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap-star-rating/4.0.6/css/star-rating.css} "/>
+
+<script th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/2.5.4/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-star-rating/4.0.6/js/star-rating.min.js}"></script>
+</head>
+<body>
+
+<div style="position: absolute; left: 100px; top: 100px; " class="login">
+	<h2>리뷰 등록</h2>
+	<form method="post" th:object="${reviewInfo}"  
+			th:action="@{'/reviewSave/'  + ${user_id} + '/'  + ${cafe_id}}">
+		<p class="title_star">리뷰와 별점을 남겨주세요.</p>
+		<div class="review_contents">
+	
+			<textarea name="contents" th:text="*{contents}"  rows="10"></textarea><br>
+		</div>   
+		<input type="hidden" name="id" th:value=${user_id}/>
+		<input value="0" type="hidden" class="rating" data-glyphicon="0" data-show-caption="false"
+		               th:field="*{star}" data-size="sm" >
+		<div class="cmd">
+		<button class="btn btn-primary" type="submit" name="save"  >저장</button>
+		</div>
+	</form>
+</div>
+
+</body>
+</html>

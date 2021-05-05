@@ -1,0 +1,148 @@
+.main {
+	padding-top: 80px;
+	padding-left: 0px;
+	position: fixed;
+	display: block;
+	top: 0;
+	bottom: 0;
+}
+#nav{
+	list-style:none;
+	height:40px;
+	padding:30px 1px;
+	margin:0;
+	background:#ffffff;
+	
+}
+#nav li{
+	float: left;
+	position: relative;
+	margin: 0 auto;
+    padding: 0 30px;
+}
+#nav li a{
+	display: block;
+	font-family: "굴림";
+	font-weight: bold;
+	font-size: 17px;
+	padding: 7px 8px;
+	margin: 0;
+	color: #000000;
+	margin: 0;
+	text-decoration: none;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+	
+}
+#nav li:hover > a{
+	color: #F4E8CD;
+	margin: 0 auto;
+    padding: 0 10px;
+}
+#nav ul{
+	list-style:none;
+	margin:0;
+	padding:0px;
+	position:absolute;
+	left:0;
+	top:40;
+	width:105px;
+	background:#ffffff;
+	text-align: center;
+	opacity: 0;
+	
+}
+#nav ul li{
+	float: none;
+	margin: 0;
+	padding: 0;
+	font-size: 10px;
+}
+#nav li:hover ul{
+	opacity: 1;
+}
+
+#div1 ul li{
+	list-style:none;	
+	float: left;
+}
+#demos {
+
+	margin: 0;
+	padding: 0px;
+}
+#demos2 {
+
+	margin: 0;
+	padding: 0px;
+}
+#demos{
+	margin: 0 auto;
+    max-width: 62.5rem;
+    width: 100%;
+}
+
+#demos .owl-carousel .item {
+	height: 45rem;
+	width:auto;
+	background:#F4E8CD;
+	padding: 1rem;
+	margin-top:2rem;
+	margin-left:3rem;
+	margin-right: 2rem; 
+}
+#demos2 .owl-carousel .item2 {
+	height: 30rem;
+	width: auto;
+
+	padding: 1rem;
+	margin-top:2rem;
+	margin-left:2rem;
+	margin-right: 2rem; 
+}
+
+.background{
+	width:100%;
+	background: #F4E8CD;
+}
+
+#demos .owl-carousel .item h4{
+	margin-top: 15px;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.goods-list .item .thumb {
+	height:95%;
+    display: block;
+    position: relative;
+    margin: 0 auto 5px;
+    background: none;
+    overflow: hidden;
+}
+
+.goods-list .item a {
+	font-size: 15px;
+
+}
+
+a:link { color: black; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: #F4E8CD; text-decoration: underline;}
+
+.address{
+	margin-left:40px;
+}
+.navbar::after {
+	margin: 10px 0px;
+	width: 100%;
+	display: block; 
+	border-bottom: 1px solid black;
+}
+
+h3{
+	font-size: 24px;
+}
+
+.pagination-div{
+	text-align: center;
+}

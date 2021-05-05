@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf Application - Bootstrap Rating Stars</title>
+    
+<!--
+    <link th:href="@{/css/star-rating.css}" 
+    href="../static/css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
+-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <!--
+    <script th:src="@{/js/star-rating.js}" 
+    src="../static/js/star-rating.js" type="text/javascript"></script>
+
+-->
+
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/4.4.0/css/font-awesome.css} "/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap-star-rating/4.0.6/css/star-rating.css} "/>
+
+<script th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/2.5.4/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-star-rating/4.0.6/js/star-rating.min.js}"></script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Thymeleaf - Bootstrap Rating Stars</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="mt-5">Rating: <strong th:text="${reviewInfo.star}"></strong></div>
+
+    <a th:href="@{/review}" class="btn btn-primary mt-5">Go back</a>
+</div>
+
+
+<div class="container">
+<table class="table table-stripped" id="reviews">
+    <thead>
+        <tr>
+            <th>id</th> <!-- 평점 -->
+            <th>stars</th>
+            <th>rate</th>
+        </tr>
+    </thead>
+    <tbody>
+	<!-- 평점 기준 별표시 출력 -->
+		<tr th:each="ra  : ${ratingInfoList}">
+			<td th:text="${ ra.id }">삼국지</td>
+			<td >
+				<input id="star-rating-id" name="star-rating-id" class="rating rating-loading" th:value="${ ra.stars }" data-min="0" data-max="5" data-step="0.5" data-readonly="true" data-size="xl">
+			<!--         <input id="star-rating-id" name="star-rating-id" class="rating rating-loading" th:field="${ ra.stars }" data-min="0" data-max="5" data-step="0.5" data-readonly="true" data-size="xl"> 
+			 -->
+			</td>
+			<td th:text="${ ra.rate }">삼국지</td>
+		
+		</tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>

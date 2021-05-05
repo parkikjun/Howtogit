@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<title>도서 대출 시스템(웹)</title>
+</head>
+<body>
+	<div th:fragment="bookList_contents">
+		<div class="container">
+			<h1>도서 목록 CSV 업로드</h1>
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<form id="uploadBooklistForm"
+							enctype = "multipart/form-data"
+							method = "post"
+							action="/admin/bookList/fileupload"
+							th:action="@{/admin/bookList/fileupload}"
+							th:object="${uploadBooklistForm}">
+							<div class="form-group">
+								<input type="file" name="fileupload" /> <br><br>
+								<input type="submit" value="업로드" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Main Content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<table class="table table-hover">
+							<tr>
+								<th>No.</th>
+								<th>ISBN</th>
+								<th>제목</th>
+							</tr>
+							<tr th:each="book, bookStat : ${bookList}">
+								<td th:text="${bookStat.count}">1</td>
+								<td>
+									<a th:href="'/admin/bookUpdate/' + ${book.lending_book_id}"><span th:text="${book.isbn}">1234567890123</span></a>
+								</td>
+								<td th:text="${book.book_name}">스티브잡스</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

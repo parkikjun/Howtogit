@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Home</title>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"
+	href="../static/css/home.css" />
+<link rel="stylesheet" th:href="@{/css/cafeInfo.css}" type="text/css"
+	href="../static/css/cafeInfo.css">
+
+<script src="jquery.matchHeight.js" type="text/javascript"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- owl carousel -->
+<link rel="stylesheet"
+	th:href="@{/owlcarousel/assets/owl.carousel.min.css}">
+<link rel="stylesheet"
+	th:href="@{/owlcarousel/assets/owl.theme.default.min.css}">
+<script th:src="@{/owlcarousel/owl.carousel.js}"></script>
+
+</head>
+<body>
+	<!-- 헤더 -->
+	<nav class="navbar navbar-light navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#" th:href="@{/}"><h2
+						style="color: rgb(78, 78, 78);">CUPPING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2></a>
+			</div>
+			<nav id="nav">
+				<li><a href="/cafe">만화카페</a></li>
+				<li><a href="/cafe">동물까페</a></li>
+				<li><a href="/cafe">감성까페</a></li>
+				<li><a href="/cafe">이색까페</a></li>
+				<li><a href="/cafe">체험까페</a></li>
+
+				
+				<div th:if="${#authorization.expr('isAuthenticated()')}">
+					<form th:action="@{/logout}">
+					<button class="btn btn-link pull-right navbar-brand" type="submit"
+						style="color: rgb(78, 78, 78);">로그아웃</button>
+					</form>
+				</div>
+				<div th:unless="${#authorization.expr('isAuthenticated()')}">
+					<form th:action="@{/registration}">
+					<button class="btn btn-link pull-right navbar-brand" type="submit"
+						style="color: rgb(78, 78, 78);">회원가입</button>
+					</form>
+					<form th:action="@{/login}">
+					<button class="btn btn-link pull-right navbar-brand" type="submit"
+						style="color: rgb(78, 78, 78);">로그인</button>
+					</form>
+				</div>
+			</nav>
+		</div>
+	</nav>
+
+	<!-- 컨텐츠 -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-12 main">
+				<div th:include="__${contents}__">메인입니다</div>
+
+			</div>
+		</div>
+	</div>
+	
+	<div class="wrap3 hide_tablet hide_mobile">
+    <div class="div">
+      <div class="left">
+        <div class="cont1">
+         <nav id ="div1">
+          <ul>
+            <li><a href="" data-track-name="Footer 회사소개"  >회사소개&nbsp;</a></li>
+            <li><a href="" data-track-name="Footer 서비스 이용약관">&nbsp;서비스 이용약관&nbsp;</a></li>
+            
+            <li><a href="" data-track-name="Footer 개인정보 처리방침"  ><b>&nbsp; 개인정보 처리방침 &nbsp;</b></a></li>
+            <li><a href="" data-track-name="Footer 영상정보 처리방침"  > &nbsp;영상정보 처리방침&nbsp; </a></li>
+            <li><a href="" data-track-name="Footer 사이트맵"  >&nbsp; 사이트맵 &nbsp;</a></li>
+            <li><a href="" data-track-name="Footer 전자공고"  >&nbsp; 전자공고 &nbsp;</a></li>
+          </ul>
+          </nav>
+          
+        </div>
+        <div class="cont2">
+          <div class="address">㈜ 머시기<br/>대표이사:머시기 주소:어딘가 사업자등록번호: 000-00-00000 
+            <a class="info">머시기 정보확인 ></a>
+            <br />머시기 판매업신고번호:2021-서울구로-어딘가 호스팅제공자: ㈜머시기
+            <br/><br/>          
+          </div>
+          <!-- <a class="info" href="https://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=3908701499" data-track-name="Footer_M 사업자 정보확인"  >사업자 정보확인 ></a> -->
+        </div>
+
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

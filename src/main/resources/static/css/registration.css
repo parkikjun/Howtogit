@@ -1,0 +1,23 @@
+body{
+	font:20px;	
+	padding-top: 130px;
+	padding-left: 80px;
+	background-image: url('./image/zzz.png');
+	background-color:#ffffff;
+	background-repeat: no-repeat;
+	background-size: cover;
+	}
+	
+.sendMail{
+	margin-left: 110px;
+}
+
+.compare{
+	width:70%;
+	margin-left: 110px;
+}
+
+.compare-text{
+	width:70%;
+	margin-left: 110px;
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=s3rgdrk9f0"></script>
+<link rel="stylesheet" type="text/css" href="../static/css/cafeInfo.css"> 
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+</head>
+<body>
+	<form method="post" th:action="@{/cafe/cafeUpdate}" th:object="${cafe}"
+		enctype="multipart/form-data">
+		<input type="hidden" name="cafeId" th:field="*{cafeId}" />  
+		<p class="Cafe_name" id="Cafe_name" th:text="*{cafe_name}" /><br /> 
+		<div class="form-group" id="textdiv">
+			<img th:src="'/image/'+ ${cafe.cafeId} +'/' + ${cafe.cafe_image}">
+			<textarea class="form-control" rows="5" name="Cafe_contents" id="Cafe_contents" th:text="*{cafe_contents}"  resize= none; readonly="readonly"></textarea>
+		</div>			
+			<button class="btn btn-primary btn-lg pull-right" type="button" onclick="location.href='/cafe'">목록</button>
+			<div class="button">
+				
+
+</form>
+
+<br><br>
+<div id="map" style="width:50%;height:400px;"></div>
+
+
+<script>
+
+
+
+var HOME_PATH = window.HOME_PATH || '.';
+
+var mapOptions = {
+    center: new naver.maps.LatLng(37.3595704, 127.105399),
+    zoom: 13 , 
+    scaleControl: false,
+    logoControl: false,
+    mapDataControl: false,
+    zoomControl: true,
+    minZoom: 6
+};
+
+var map = new naver.maps.Map('map', mapOptions);
+
+var marker = new naver.maps.Marker({
+    position: new naver.maps.LatLng(37.3595704, 127.105399),
+    map: map
+    
+    
+   
+});
+
+
+
+</script>
+<br><br>
+
+<!-- 상세 정보 -->
+<section class="restaurant-detail">
+            <header>
+              <div class="restaurant_title_wrap">
+                <span class="title">
+               <form method="post" th:action="@{/cafe/cafeUpdate}" th:object="${cafe}"
+		enctype="multipart/form-data">
+		<input type="hidden" name="cafeId" th:field="*{cafeId}" />  
+		<h1 class="Cafe_name" id="Cafe_name" th:text="*{cafe_name}"></h1> <br> 
+                    <strong class="rate-point ">
+                      <span>별점 4.5</span>
+                    </strong>
+</form>
+                  <p>1호점</p>
+                </span>
+                
+</div>
+</header>
+</section>
+<div class="wannago_wrap">
+                    <a class="ic ic-like" th:href="'/like/add/'+ ${cafe.cafeId}">좋아요</a>
+                  </div>
+                  
+                    <div class="status">					<!--  조회수 좋아요 리뷰수 -->
+                <span class="cnt hit">조회수 120,702</span>
+                <span class="cnt review">리뷰수 150</span>
+                <span class="cnt favorite">좋아요 수 2,470</span>
+              </div>
+                  
+<table class="info_no_menu" border="1">
+  <caption>레스토랑 상세 정보</caption>
+
+  <tbody>
+    <tr class="only-desktop">
+      <th>주소</th>
+      <td>서울특별시 용산구 두텁바위로1길 28<br/>
+            <span class="Restaurant__InfoAddress--Rectangle">지번</span>
+          <span class="Restaurant__InfoAddress--Text">서울시 용산구 갈월동 53-8</span>
+      </td>
+    </tr>
+
+    <tr class="only-desktop">
+      <th>전화번호</th>
+      <td>010-3527-0884</td>
+    </tr>
+
+    <tr>
+      <th>음식 종류</th>
+      <td>
+        <span>카페 / 디저트</span>
+      </td>
+    </tr>
+
+    <tr>
+      <th>가격대</th>
+      <td>만원 미만</td>
+    </tr>
+
+    <tr>
+      <th>주차</th>
+      <td>주차공간없음 </td>
+    </tr>
+
+    <tr>
+      <th style="vertical-align:top;">영업시간</th>
+      <td>수-금: 12:00 - 20:00<br /> 토-일: 13:00 - 20:00</td>
+    </tr>
+
+
+
+    <tr>
+      <th>휴일</th>
+      <td>월, 화</td>
+    </tr>
+
+    <tr>
+      <th>웹 사이트</th>
+      <td>
+        <a href="http://www.instagram.com/stickyrickys/" class="under_line" target="_blank" style="color: black;">
+          식당 홈페이지로 가기
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <th>메뉴</th>
+      <td class="menu_td">
+        <ul class="Restaurant_MenuList">
+            <li class="Restaurant_MenuItem">
+              <span class="Restaurant_Menu">한가지맛 컵/콘</span>
+                <span class="Restaurant_MenuPrice">4,000원</span>
+            </li>
+            <li class="Restaurant_MenuItem">
+              <span class="Restaurant_Menu">두가지맛 컵/콘</span>
+                <span class="Restaurant_MenuPrice">6,000원</span>
+            </li>
+            <li class="Restaurant_MenuItem">
+              <span class="Restaurant_Menu">세가지맛 컵</span>
+                <span class="Restaurant_MenuPrice">8,000원</span>
+            </li>
+        </ul>
+      </td>
+    </tr>
+
+  </tbody>
+</body>
+</html>

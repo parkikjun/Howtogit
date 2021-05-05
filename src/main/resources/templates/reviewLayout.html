@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>review</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" 
+		th:href="@{/css/review.css}"
+		href="../static/css/review.css"/>
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/4.4.0/css/font-awesome.css} "/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap-star-rating/4.0.6/css/star-rating.css} "/>
+
+<script th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/2.5.4/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-star-rating/4.0.6/js/star-rating.min.js}"></script>
+<style>
+
+</style>
+</head>
+<body>
+	<!-- 헤더 -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#" th:href="@{/}">CUPPING</a>
+			</div>
+			<form method="POST" th:action="@{/logout}">
+				<button class="btn btn-link pull-right navbar-brand"
+					type="submit"> 로그아웃 </button>
+			</form>
+		</div>
+	</nav>
+	<br><br><br><br><br><br><br><br><br><br><br>
+	<!-- 컨텐츠 -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-2 main">
+				<div th:include="__${contents}__">메인입니다</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

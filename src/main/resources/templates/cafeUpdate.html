@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+</head>
+<body>
+	<div class="jumbotron text-center" style="margin-bottom: 0">
+		<h1>카페등록</h1>
+	</div>
+	<form method="post" th:action="@{/cafe/cafeUpdate}" th:object="${cafe}"
+		enctype="multipart/form-data">
+		<input type="hidden" name="cafeId" th:field="*{cafeId}" /> 
+		<label for="Cafe_name">카페이름:</label> 
+		<input type="text" name="Cafe_name" id="Cafe_name" th:field="*{cafe_name}" /><br /> 
+		<div class="form-group">
+				<input type="file" class="form-control-file border" 
+				name="image" id="image" accept="image/*" 
+				onchange="setThumbnail(event)" multiple/>
+			<div id="image_container">
+				<img th:src="'/image/'+ ${cafe.cafeId} +'/' + ${cafe.cafe_image}">
+			</div>
+		</div>		
+		<div class="form-group">
+			<label for="cafe_contents">내용:</label>
+			<textarea class="form-control" rows="5" name="Cafe_contents" id="Cafe_contents" th:field="*{cafe_contents}"></textarea>
+		</div>	
+			
+			<button class="btn btn-primary btn-lg pull-right" type="submit" name="update">수정</button>
+			<button class="btn btn-danger btn-lg" type="submit" name="delete">삭제</button>
+	
+	<script type="text/javascript"> 
+				function setThumbnail(event) { 
+					for (var image of event.target.files) { 
+						var reader = new FileReader(); 
+						reader.onload = function(event) { 
+							var img = document.createElement("img"); 
+							img.onclick = function()
+			                {
+			                    deleteDIV( this );
+			                }
+							img.setAttribute("src", event.target.result); 
+							
+							document.querySelector("div#image_container").appendChild(img); 
+							}; 
+							
+							console.log(image); 
+							reader.readAsDataURL(image);
+							};
+												
+					}
+				
+				
+				function deleteDIV(  deletingDivObj  )
+		        {
+		            var parentObj = deletingDivObj.parentNode ;
+		            parentObj.removeChild( deletingDivObj );
+		        };
+</script>
+</form>
+</body>
+</html>

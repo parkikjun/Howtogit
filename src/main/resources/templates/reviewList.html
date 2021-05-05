@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>reviewList</title>
+	<meta charset="UTF-8"/>
+<style type="text/css">
+
+</style>
+
+</head>
+<body>
+<div th:fragment="reviewList_contents">
+	<div>
+			<h1>리뷰</h1>
+            <p th:text="${userInfo.username}">review_id</p> 
+            <p><a th:href="'/reviewSave/' + ${user_id}" >리뷰쓰기</a>
+            </p>
+	</div>
+	<div class= "container1">
+
+		<div class="item" th:each="ra  : ${reviewInfoList}" th:object = ${reviewInfoList}>
+			<hr>
+			<table   th:object=${userInfo}  >
+				<tbody>
+					<tr >
+						<td th:text="${#temporals.format(ra.createdate, 'yyyy/MM/dd')}" width = "200"></td>
+						<td  th:text="${userInfo.username}" width = "800">username
+				            <p th:text="${userInfo.username}" >review_id</p> 
+				            <p><a th:href="'/reviewSave/' + ${user_id}+'/'+${cafeId}" >리뷰쓰기</a>
+				            </p>
+						</td>
+
+
+					</tr>
+					<tr>
+						<td width = "200">
+							<input id="star-rating-id" name="star-rating-id" 
+							th:value="${ ra.star }" data-min="0" data-max="5" data-step="0.5" 
+							data-readonly="true"  data-show-clear="false"  data-size="xs" data-show-caption="false"
+							type="hidden" class="rating" data-glyphicon="0"
+							>
+						</td >
+						<td   th:text="${ ra.contents }"  style="word-break:break-all"    width = "800">삼국지
+						</td>
+					</tr>
+					<tr>
+						<td width = "200">
+							<a th:href="'/reviewUpdate/' + ${user_id} +'/' + ${ra.review_id}">
+								<span th:text="${ra.review_id}">admin</span>
+							</a>
+							<img src="${path}/images/${vo.productUrl}">
+						</td >
+						<td width = "800">
+							<img src="${path}/images/${vo.productUrl}" onerror="this.style.display='none'" alt='' >
+						</td >
+						</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>	
+	
+</div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+
+	<title>리뷰유저리스트</title>
+</head>
+<body>
+
+		<div style="position: absolute; left: 100px; top: 100px;">
+			<h1>사용자 목록</h1>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>사용자 ID</th>
+						<th>E-mail</th>
+						<th>사용여부</th>
+						<th>리뷰보기</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="uu : ${userList}">
+						<td>
+							<a th:href="@{'/admin/userUpdate/' + ${uu.user_id}}">
+								<span th:text="${uu.username}">admin</span>
+							</a>
+						</td>
+						<td th:text="${uu.mail_address}">admin@naver.com</td>
+						<td th:text="${uu.enabled}">true</td>
+						<td>
+							<a th:href="'/reviewList/' + ${uu.user_id}">
+								<span th:text="리뷰보기">admin</span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+</body>
+</html>
